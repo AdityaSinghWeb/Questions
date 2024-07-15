@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Change</title>
+    <style>
+      * {
+        text-align: center;
+      }
+      h1 {
+        font-size: 41px;
+      }
+      button {
+        padding: 14px 21px;
+        font-size: 21px;
+        margin: 8px;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Change background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+</html>
+<script>
+  //Generate random color
+  let random = function () {
+    let bgColor = "#";
+    let hex = "0123456789ABCDEF";
+    for (let i = 0; i < 6; i++) {
+      bgColor += hex[Math.floor(Math.random() * 16)];
+    }
+    return bgColor;
+  };
+  let intervalId;
+  document.querySelector("#start").addEventListener("click", () => {
+    let start = function () {
+      document.body.style.backgroundColor = random();
+    };
+    intervalId = setInterval(start, 1000);
+  });
+  document.querySelector("#stop").addEventListener("click", () => {
+    clearInterval(intervalId);
+  });
+</script>
